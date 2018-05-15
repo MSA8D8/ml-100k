@@ -3,8 +3,6 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 import os
-#os.chdir('./MF_intern/')
-print(os.getcwd())
 rating_error = lambda r, p, q:r - np.dot(p, q)
 
 class MatrixFactorization():
