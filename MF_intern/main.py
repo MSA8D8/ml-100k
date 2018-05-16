@@ -3,7 +3,11 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 import os
+import sys
+sys.path.append(os.getcwd())
+
 rating_error = lambda r, p, q:r - np.dot(p, q)
+
 
 class MatrixFactorization():
     def __init__(self):
