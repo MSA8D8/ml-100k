@@ -4,8 +4,7 @@ import pandas as pd
 import datetime as dt
 import os
 import sys
-print(sys.path)
-sys.path.append('/MF_intern/')
+
 rating_error = lambda r, p, q:r - np.dot(p, q)
 
 
@@ -13,18 +12,18 @@ class MatrixFactorization():
     def __init__(self):
         #まずはじめに、ml-100kのデータセットをすべて読み込む。
 
-        self.df = pd.read_csv('u.data', sep='\t', names = ['user id','item id','rating','timestamp'])
+        self.df = pd.read_csv('./MF_intern/u.data', sep='\t', names = ['user id','item id','rating','timestamp'])
         self.df.timestamp = [dt.datetime.fromtimestamp(time) for time in self.df.timestamp]
         self.df = self.df.set_index('user id')
 
         label_cols=['movie id' , 'movie title','release date','video release date','IMDb URL','unknown','Action','Adventure','Animation','Children','Comedy','Crime','Documentary' ,'Drama','Fantasy','Film-Noir', 'Horror' , 'Musical' , 'Mystery' , 'Romance' , 'Sci-Fi','Thriller', 'War','Western']
-        itemlist = pd.read_csv('u.item', sep='|', names = label_cols, encoding='latin-1')
+        itemlist = pd.read_csv('./MF_intern/u.item', sep='|', names = label_cols, encoding='latin-1')
         self.itemlist = itemlist.set_index('movie id')
 
         user_cols = ['user id','age','gender','occupation','zip code']
-        userlist = pd.read_csv('u.user',sep='|', names = user_cols)
+        userlist = pd.read_csv('./MF_intern/u.user',sep='|', names = user_cols)
         self.userlist = userlist.set_index('user id')
-        self.joblist = pd.read_csv('u.occupation',sep='|',names=['job'])
+        self.joblist = pd.read_csv('./MF_intern/u.occupation',sep='|',names=['job'])
 
         #ここまでがデータの読み込み
 
