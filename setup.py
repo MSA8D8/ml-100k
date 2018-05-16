@@ -71,6 +71,8 @@ setup(
     #packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     packages=['MF_intern'],
 
+    include_package_data=True,
+
     # Alternatively, if you want to distribute just a my_module.py, uncomment
     # this:
     #   py_modules=["my_module"],
