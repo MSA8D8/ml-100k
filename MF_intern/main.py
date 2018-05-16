@@ -10,7 +10,7 @@ rating_error = lambda r, p, q:r - np.dot(p, q)
 
 class MatrixFactorization():
     def __init__(self):
-        #まずはじめに、ml-100kのデータセットをすべて読み込む。
+        #まずはじめに、ml-100kのデータセットを読み込む。
 
         self.df = pd.read_csv('u.data', sep='\t', names = ['user id','item id','rating','timestamp'])
         self.df.timestamp = [dt.datetime.fromtimestamp(time) for time in self.df.timestamp]
