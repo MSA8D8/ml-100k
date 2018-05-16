@@ -4,8 +4,8 @@ import pandas as pd
 import datetime as dt
 import os
 import sys
-sys.path.append(os.getcwd())
-
+print(sys.path)
+sys.path.append('/MF_intern/')
 rating_error = lambda r, p, q:r - np.dot(p, q)
 
 
