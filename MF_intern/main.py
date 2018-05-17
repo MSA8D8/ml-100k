@@ -16,16 +16,20 @@ class MatrixFactorization():
         self.df.timestamp = [dt.datetime.fromtimestamp(time) for time in self.df.timestamp]
         self.df = self.df.set_index('user id')
 
+
         label_cols=['movie id' , 'movie title','release date','video release date','IMDb URL','unknown','Action','Adventure','Animation','Children','Comedy','Crime','Documentary' ,'Drama','Fantasy','Film-Noir', 'Horror' , 'Musical' , 'Mystery' , 'Romance' , 'Sci-Fi','Thriller', 'War','Western']
         itemlist = pd.read_csv('u.item', sep='|', names = label_cols, encoding='latin-1')
         self.itemlist = itemlist.set_index('movie id')
+        #ここまでがデータの読み込み
+        
 
+        '''
         user_cols = ['user id','age','gender','occupation','zip code']
         userlist = pd.read_csv('u.user',sep='|', names = user_cols)
         self.userlist = userlist.set_index('user id')
         self.joblist = pd.read_csv('u.occupation',sep='|',names=['job'])
+        '''
 
-        #ここまでがデータの読み込み
 
         #ここで、d.dataからuser idとitem id、ratingをまとめた行列を作成する。
         #縦にuser id、横にitem idをとり、ratingが存在しない要素はすべて0.0とした。
