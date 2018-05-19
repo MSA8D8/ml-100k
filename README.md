@@ -7,7 +7,7 @@ latent factorとしてはUesr IDとItem IDの2つに分解している。  
 
 プログラムを動かすディレクトリと同じ所に、名前を変えず、置いて下さい。  
 
-使用方法としては以下のようになる。但し、User IDはリストで入力すること。　　
+使用方法としては以下のようになります。但し、User IDはリストで入力する必要があります。　　
 
 import MF_intern  
 from MF_intern import main  
