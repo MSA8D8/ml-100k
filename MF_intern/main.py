@@ -21,7 +21,7 @@ class MatrixFactorization():
         itemlist = pd.read_csv('u.item', sep='|', names = label_cols, encoding='latin-1')
         self.itemlist = itemlist.set_index('movie id')
         #ここまでがデータの読み込み
-        
+
 
         '''
         user_cols = ['user id','age','gender','occupation','zip code']
@@ -59,7 +59,20 @@ class MatrixFactorization():
         計算結果をすべて合計するため、リスト内包表記にして、計算速度を向上させた。
         Rの中にある0.0の要素以外のすべての要素から、PとQの行列を作成する。
         ちなみに、最後の +beta/2.0....は正則化の計算である。
+
+        また、リスト内包表記をforループに変換すると、
+
+        user,item = R.shape
+        for i in range(user):
+            for j in range(item):
+                if R[i][j] == 0:
+                    continue
+                error += pow(get_rating_error(R[i][j], P.T[i], Q.T[j]), 2)
+        error += beta/2.0 * (numpy.linalg.norm(P) + numpy.linalg.norm(Q))
+
+        となる。
         '''
+
         return sum([sum([pow(rating_error(rate, P.T[i], Q.T[j]), 2)
                     for j,rate in enumerate(each) if rate != 0.0])
                     for i,each in enumerate(R)]) + beta/2.0 * (pow(np.linalg.norm(P),2) + pow(np.linalg.norm(Q),2))
