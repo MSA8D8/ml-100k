@@ -31,9 +31,10 @@ class MatrixFactorization():
         '''
 
 
+
+        self.mat = self._user_item_mat()
         #ここで、d.dataからuser idとitem id、ratingをまとめた行列を作成する。
         #縦にuser id、横にitem idをとり、ratingが存在しない要素はすべて0.0とした。
-        self.mat = self._user_item_mat()
 
     def _user_item_mat(self):
         '''
@@ -63,6 +64,7 @@ class MatrixFactorization():
         また、リスト内包表記をforループに変換すると、
 
         user,item = R.shape
+        error = 0.0
         for i in range(user):
             for j in range(item):
                 if R[i][j] == 0:
@@ -147,7 +149,7 @@ class MatrixFactorization():
             re = np.array(slist.index) - 1
 
 
-            #ここで、計算結果の上位10位のitemを推薦している。
+            #ここで、計算結果の上位10位のitemを表示している。
             item = self.itemlist.iloc[re,[0]]
             item = pd.concat([item[0:rank],slist[0:rank]],axis=1)
 
@@ -156,6 +158,6 @@ class MatrixFactorization():
             print('------------------------------------------------------------------------------')
 
 if __name__ == '__main__':
-    user_ids=[99,100,101]
+    user_ids=[1,20]
     MF = MatrixFactorization()
     MF.recommend(user_ids)
