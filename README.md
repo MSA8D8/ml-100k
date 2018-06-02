@@ -8,8 +8,7 @@ latent factorとしてはUesr IDとItem IDの2つに分解している。  
 
 使用方法としては以下のようになります。但し、User IDはリストで入力する必要があります。　　
 
-import ZOZO_intern  
-from ZOZO_intern import main  
+from ml_100k import main  
 
 
 m = main.MatrixFactorization()    
