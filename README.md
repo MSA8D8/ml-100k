@@ -1,5 +1,4 @@
 
-# start_today_intern  
 Matrix Factrizationを用いて、ml-100kのデータセットから、映画のレコメンドを表示させるプログラム。  
 latent factorとしてはUesr IDとItem IDの2つに分解している。  
 
